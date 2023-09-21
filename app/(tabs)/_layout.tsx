@@ -44,9 +44,9 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="two"
+        name="clients/index"
         options={{
-          title: 'Tab Two',
+          title: 'Clients',
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
         }}
       />
