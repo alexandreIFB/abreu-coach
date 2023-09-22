@@ -1,8 +1,11 @@
-import { Text } from '../../../components/Themed';
+import { ClientsList } from '../../../components/ClientsList';
+import { Container } from './styles';
 
 export default function TabClientsScreen() {
   return (
-    <Text>Client Tab</Text>
+    <Container>
+      <ClientsList />
+    </Container>
   );
 }
 

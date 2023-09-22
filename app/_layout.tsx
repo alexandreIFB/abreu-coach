@@ -1,9 +1,8 @@
 import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
 import { SplashScreen, Stack } from 'expo-router';
 import { useEffect } from 'react';
-import { useColorScheme } from 'react-native';
+import { ThemeProvider } from 'styled-components/native';
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -20,9 +19,9 @@ SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   const [isFontsLoaded, error ]= useFonts({
-    'GeneralSans-400': require('./src/assets/fonts/GeneralSans-Regular.otf'),
-    'GeneralSans-600': require('./src/assets/fonts/GeneralSans-Semibold.otf'),
-    'GeneralSans-700': require('./src/assets/fonts/GeneralSans-Bold.otf'),
+    'GeneralSans-400': require('../assets/fonts/GeneralSans-Regular.otf'),
+    'GeneralSans-600': require('../assets/fonts/GeneralSans-Semibold.otf'),
+    'GeneralSans-700': require('../assets/fonts/GeneralSans-Bold.otf'),
     ...FontAwesome.font,
   });
 
@@ -43,14 +42,13 @@ export default function RootLayout() {
   return <RootLayoutNav />;
 }
 
-function RootLayoutNav() {
-  const colorScheme = useColorScheme();
+import light from '../theme/light';
 
+function RootLayoutNav() {
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+    <ThemeProvider theme={light}>
       <Stack>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
       </Stack>
     </ThemeProvider>
   );
