@@ -21,8 +21,3 @@ export const ClientInfo = styled.View`
   gap: 2px;
 `;
 
-export const ClientImage = styled.Image`
-  width: 32px;
-  height: 32px;
-  border-radius: 16px;
-`;

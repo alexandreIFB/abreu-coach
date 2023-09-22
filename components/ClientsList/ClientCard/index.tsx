@@ -1,8 +1,8 @@
 import { Client } from '../../../constants/clients_mock';
+import { AvataImage } from '../../AvataImage';
 import { Text } from '../../Text';
-import {  ClientImage, ClientInfo,  Container } from './styles';
+import {   ClientInfo,  Container } from './styles';
 import { FontAwesome } from '@expo/vector-icons';
-import {Image} from 'react-native';
 
 
 
@@ -12,12 +12,11 @@ type ClientCardProps = {
 
 
 export function ClientCard({client}: ClientCardProps){
-  const resolvedSource = Image.resolveAssetSource({ uri: client.profileImage });
 
   return (
     <Container>
-      <ClientImage
-        source={resolvedSource}
+      <AvataImage
+        url={client.profileImage || ''}
       />
       <ClientInfo>
         <Text weight='600' size={16}>{client.name}</Text>
