@@ -9,17 +9,21 @@ export interface Client {
 }
 
 // ESM
-import { faker } from '@faker-js/faker';
+import { Faker, faker, pt_BR } from '@faker-js/faker';
+
+export const fakerBr = new Faker({
+  locale: [pt_BR],
+});
 
 // CJS
 
 export function createRandomClient(): Client {
   return {
-    id: faker.string.uuid(),
-    name: faker.person.fullName(),
-    gender: faker.person.gender(),
-    age: faker.number.int({max: 60, min: 10}),
-    profileImage: faker.image.avatar(),
+    id: fakerBr.string.uuid(),
+    name: fakerBr.person.fullName(),
+    gender: faker.helpers.arrayElement(['Masculino', 'Feminino']),
+    age: fakerBr.number.int({max: 60, min: 10}),
+    profileImage: fakerBr.image.avatar(),
   };
 }
 

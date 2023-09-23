@@ -9,7 +9,7 @@ type AvatarImageProps = {
 export const CustomAvatarImage = styled.Image<{size: number}>`
   width: ${({size}) => `${size}px`};
   height: ${({size}) => `${size}px`};
-  border-radius: 16px;
+  border-radius: ${({size}) => `${size/2}px`};
 `;
 
 export function AvataImage({url,size}: AvatarImageProps){
