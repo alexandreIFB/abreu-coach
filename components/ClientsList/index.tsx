@@ -26,7 +26,6 @@ export function ClientsList() {
             <ClientCard client={item} />
           </TouchableOpacity>
         </Link>
-
       )}
       contentContainerStyle={{padding: 8, gap: 10}}
     />
