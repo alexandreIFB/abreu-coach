@@ -4,7 +4,7 @@ export const Container = styled.View`
   flex-direction: row;
   align-items: center;
   padding: 10px;
-  background-color: #edf2f6;
+  background-color: ${({theme}) => theme.COLORS.CARDBACKGROUND};
   border-radius: 8px;
   gap: 12px;
 `;

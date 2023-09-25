@@ -48,6 +48,7 @@ export default function ClientProfile() {
                 />
               </TouchableOpacity>
             )}
+            contentContainerStyle={{padding: 10, gap: 12}}
           />
         )
       }
