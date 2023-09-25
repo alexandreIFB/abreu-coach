@@ -14,13 +14,11 @@ export default function ClientProfile() {
   const [activeTab, setActiveTab] = useState(0);
   const [showPlan, setShowPlan] = useState<TrainingPlan | null>(null);
 
-
   const tabs = ['Treino', 'Dieta', 'Protocolo'];
 
   const handleTabChange = (index: number) => {
     setActiveTab(index);
   };
-
 
   const { id } = useLocalSearchParams();
 
