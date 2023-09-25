@@ -33,31 +33,35 @@ export default function ClientProfile() {
       <ClientProfileHeader client={user} />
       <NavBar tabs={tabs} activeTab={activeTab} onChangeTab={handleTabChange} />
       {
-        !showPlan && (
-          <FlatList
-            data={trainingList}
-            keyExtractor={item => item.id}
-            renderItem={({item}) => (
-              <TouchableOpacity onPress={() => {
-                setShowPlan(item);
-              }}>
-                <TrainingCard
-                  trainingData={item}
-                />
-              </TouchableOpacity>
-            )}
-            contentContainerStyle={{padding: 10, gap: 12}}
-          />
-        )
+        activeTab === 0 && (<>
+          {
+            !showPlan  && (
+              <FlatList
+                data={trainingList}
+                keyExtractor={item => item.id}
+                renderItem={({item}) => (
+                  <TouchableOpacity onPress={() => {
+                    setShowPlan(item);
+                  }}>
+                    <TrainingCard
+                      trainingData={item}
+                    />
+                  </TouchableOpacity>
+                )}
+                contentContainerStyle={{padding: 10, gap: 12}}
+              />
+            )
+          }
+          {showPlan && (
+            <DivisionView
+              plan={showPlan}
+              onBackPress={() => {
+                setShowPlan(null);
+              }}
+            />
+          )}
+        </>)
       }
-      {showPlan && (
-        <DivisionView
-          plan={showPlan}
-          onBackPress={() => {
-            setShowPlan(null);
-          }}
-        />
-      )}
     </View>
   );
 }
