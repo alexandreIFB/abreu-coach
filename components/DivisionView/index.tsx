@@ -1,11 +1,11 @@
 import { View } from 'react-native';
 import { TrainingPlan } from '../../constants/training_mock';
 import { Text } from '../Text';
-import { BackButton, Container, DescribeContainer, HeaderContainer, TitleContainer } from './styles';
+import { BackButton, Container, DescribeContainer,  HeaderContainer, TitleContainer } from './styles';
 import { FontAwesome } from '@expo/vector-icons';
 import { formatDate } from '../../app/helpers/formatDate';
-
-
+import { FlatList, TouchableOpacity } from 'react-native-gesture-handler';
+import { DivisionCard } from '../DivisionCard';
 
 type DivisionViewProps = {
   plan: TrainingPlan
@@ -38,6 +38,20 @@ export function DivisionView({plan, onBackPress}: DivisionViewProps){
           <Text weight='700'>Expiração: <Text>{formatDate(plan.expirationDate)}</Text></Text>
         </DescribeContainer>
       </HeaderContainer>
+      <FlatList
+        data={plan.divisions}
+        style={{ width: '100%' }}
+        keyExtractor={item => item.id}
+        renderItem={({item}) => (
+          <TouchableOpacity>
+            <DivisionCard
+              divisonData={item}
+            />
+          </TouchableOpacity>
+        )}
+        contentContainerStyle={{padding: 10, gap: 12}}
+        showsVerticalScrollIndicator={false}
+      />
     </Container>
   );
 }

@@ -3,13 +3,15 @@ import styled from 'styled-components/native';
 export const Container = styled.View`
   flex: 1;
   align-items: center;
+  background-color: #fff;
 `;
 
 export const HeaderContainer = styled.View`
   width: 100%;
-  background-color: #fff;
   padding: 10px;
   gap: 12px;
+  border-bottom-width: 1px;
+  border-color: #ccc;
 `;
 
 export const TitleContainer = styled.View`
