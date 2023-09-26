@@ -8,12 +8,12 @@ import { AddIconFixed } from '../AddIconFixed';
 
 type TabTrainingProps = {
   trainingList: TrainingPlan[]
-  setShowPlan: React.Dispatch<React.SetStateAction<TrainingPlan | null>>
+  handlePlanChange(state: TrainingPlan | null): void
   showPlan: TrainingPlan | null
 }
 
 
-export function TabTraining({trainingList, setShowPlan, showPlan}: TabTrainingProps) {
+export function TabTraining({trainingList, handlePlanChange, showPlan}: TabTrainingProps) {
   return (
     (<>
       {
@@ -24,7 +24,7 @@ export function TabTraining({trainingList, setShowPlan, showPlan}: TabTrainingPr
               keyExtractor={item => item.id}
               renderItem={({item}) => (
                 <TouchableOpacity  onPress={() => {
-                  setShowPlan(item);
+                  handlePlanChange(item);
                 }}>
                   <TrainingCard
                     trainingData={item}
@@ -42,7 +42,7 @@ export function TabTraining({trainingList, setShowPlan, showPlan}: TabTrainingPr
         <DivisionView
           plan={showPlan}
           onBackPress={() => {
-            setShowPlan(null);
+            handlePlanChange(null);
           }}
         />
       )}

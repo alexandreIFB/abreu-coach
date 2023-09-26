@@ -3,18 +3,17 @@ import { Client } from '../../constants/clients_mock';
 import { AvataImage } from '../AvataImage';
 import { Text } from '../Text';
 import { ButtonsContainer, ButtonsIcon, Container, ContainerMinimal } from './styles';
-import { useState } from 'react';
 import { DraggableLine } from '../DraggableLine';
 import { Linking } from 'react-native';
 
 
 type ClientProfileHeaderProps = {
   client: Client
+  isClosed: boolean
+  handleClosedHeader(): void
 }
 
-export function ClientProfileHeader({client}: ClientProfileHeaderProps){
-  const [isClosed, setisClosed] = useState(false);
-
+export function ClientProfileHeader({client, isClosed, handleClosedHeader}: ClientProfileHeaderProps){
   function renderMinimal() {
     return (
       <ContainerMinimal>
@@ -59,7 +58,7 @@ export function ClientProfileHeader({client}: ClientProfileHeaderProps){
       {
         isClosed ? renderMinimal() : renderDefault()
       }
-      <DraggableLine isClosed={isClosed} handleTouch={() => setisClosed(prev => !prev)}/>
+      <DraggableLine isClosed={isClosed} handleTouch={() => handleClosedHeader()}/>
     </>
   );
 }
