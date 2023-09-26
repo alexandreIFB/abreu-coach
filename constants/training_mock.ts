@@ -38,28 +38,61 @@ const trainingNames = [
   'Treino de Equilíbrio'
 ];
 
-export function createRandomDivision(): TrainingDivision {
+const exercises: Exercise[] = [
+  {
+    name: 'Supino Reto',
+    description: 'Realizar 4 séries de 12 repetições com 60 segundos de descanso entre as séries.',
+    exerciseTechnique: 'Instruções detalhadas de como realizar o supino corretamente.',
+    equipment: 'Banco de supino, barra e pesos',
+    demoImage: 'URL da imagem ou vídeo de demonstração',
+    notes: 'Dicas adicionais, como ajuste de altura do banco.'
+  },
+  {
+    name: 'Tríceps Pulldown',
+    description: 'Realizar 3 séries de 15 repetições com 45 segundos de descanso entre as séries.',
+    exerciseTechnique: 'Instruções detalhadas de como realizar o tríceps pulldown corretamente.',
+    equipment: 'Máquina de tríceps pulldown',
+    demoImage: 'URL da imagem ou vídeo de demonstração',
+    notes: 'Dicas adicionais, como pegada recomendada.'
+  },
+  {
+    name: 'Agachamento Livre',
+    description: 'Realizar 5 séries de 10 repetições com 90 segundos de descanso entre as séries.',
+    exerciseTechnique: 'Instruções detalhadas de como realizar o agachamento livre corretamente.',
+    equipment: 'Barra e pesos',
+    demoImage: 'URL da imagem ou vídeo de demonstração',
+    notes: 'Dicas adicionais, como posição dos pés.'
+  },
+  {
+    name: 'Rosca Direta',
+    description: 'Realizar 3 séries de 12 repetições com 45 segundos de descanso entre as séries.',
+    exerciseTechnique: 'Instruções detalhadas de como realizar a rosca direta corretamente.',
+    equipment: 'Barra EZ ou halteres',
+    demoImage: 'URL da imagem ou vídeo de demonstração',
+    notes: 'Dicas adicionais, como postura.'
+  },
+  {
+    name: 'Leg Press',
+    description: 'Realizar 4 séries de 12 repetições com 60 segundos de descanso entre as séries.',
+    exerciseTechnique: 'Instruções detalhadas de como realizar o leg press corretamente.',
+    equipment: 'Máquina de leg press',
+    demoImage: 'URL da imagem ou vídeo de demonstração',
+    notes: 'Dicas adicionais, como ajuste do assento.'
+  }
+];
+
+
+function createRandomExercice(): Exercise {
+  return faker.helpers.arrayElement(exercises);
+}
+
+function createRandomDivision(): TrainingDivision {
   return {
     'id': faker.string.uuid(),
     'name': faker.helpers.arrayElement(['Peito + Triceps', 'Costas + Biceps', 'Braço', 'Ombro + Trapézio', 'Perna + Abs', 'Força']),
-    'exercises': [
-      {
-        'name': 'Supino Reto',
-        'description': 'Realizar 4 séries de 12 repetições com 60 segundos de descanso entre as séries.',
-        'exerciseTechnique': 'Instruções detalhadas de como realizar o supino corretamente.',
-        'equipment': 'Banco de supino, barra e pesos',
-        'demoImage': 'URL da imagem ou vídeo de demonstração',
-        'notes': 'Dicas adicionais, como ajuste de altura do banco.'
-      },
-      {
-        'name': 'Tríceps Pulldown',
-        'description': 'Realizar 3 séries de 15 repetições com 45 segundos de descanso entre as séries.',
-        'exerciseTechnique': 'Instruções detalhadas de como realizar o tríceps pulldown corretamente.',
-        'equipment': 'Máquina de tríceps pulldown',
-        'demoImage': 'URL da imagem ou vídeo de demonstração',
-        'notes': 'Dicas adicionais, como pegada recomendada.'
-      }
-    ]
+    'exercises': faker.helpers.multiple(createRandomExercice, {
+      count: 7,
+    })
   };
 }
 
