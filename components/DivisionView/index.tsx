@@ -4,7 +4,7 @@ import { Text } from '../Text';
 import { BackButton, Container, DescribeContainer,  HeaderContainer, TitleContainer } from './styles';
 import { FontAwesome } from '@expo/vector-icons';
 import { formatDate } from '../../app/helpers/formatDate';
-import { FlatList, TouchableOpacity } from 'react-native-gesture-handler';
+import { FlatList } from 'react-native-gesture-handler';
 import { DivisionCard } from '../DivisionCard';
 
 type DivisionViewProps = {
@@ -43,11 +43,9 @@ export function DivisionView({plan, onBackPress}: DivisionViewProps){
         style={{ width: '100%' }}
         keyExtractor={item => item.id}
         renderItem={({item}) => (
-          <TouchableOpacity>
-            <DivisionCard
-              divisonData={item}
-            />
-          </TouchableOpacity>
+          <DivisionCard
+            divisionData={item}
+          />
         )}
         contentContainerStyle={{padding: 10, gap: 12}}
         showsVerticalScrollIndicator={false}

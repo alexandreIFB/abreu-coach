@@ -25,10 +25,23 @@ export interface TrainingPlan  {
   divisions: TrainingDivision[];
 }
 
+const trainingNames = [
+  'Treino de Desenvolvimento',
+  'Treino de Resistência',
+  'Treino de Potência',
+  'Treino de Hipertrofia',
+  'Treino de Recuperação',
+  'Treino de Velocidade',
+  'Treino de Agilidade',
+  'Treino de Flexibilidade',
+  'Treino de Explosão',
+  'Treino de Equilíbrio'
+];
+
 export function createRandomDivision(): TrainingDivision {
   return {
     'id': faker.string.uuid(),
-    'name': faker.helpers.arrayElement(['Peito + Triceps', 'Costas + Biceps', 'Braço', 'Ombro', 'Perna', 'Força']),
+    'name': faker.helpers.arrayElement(['Peito + Triceps', 'Costas + Biceps', 'Braço', 'Ombro + Trapézio', 'Perna + Abs', 'Força']),
     'exercises': [
       {
         'name': 'Supino Reto',
@@ -58,18 +71,20 @@ const notExpiredTraining: TrainingPlan = {
   'id': faker.string.uuid(),
   'clientId': '1',
   'description': faker.helpers.arrayElement(['Adaptação', 'Cutting', 'Off Season']),
-  'name': 'Treino ' + faker.company.name(),
+  'name': faker.helpers.arrayElement(trainingNames),
   'startDate': '2023-09-22',
   'expirationDate': '2023-10-22',
   'divisions': divisonList,
 };
 
 export function generateRandomTraining(): TrainingPlan{
+
+
   return {
     'id': faker.string.uuid(),
     'clientId': '1',
     'description': faker.helpers.arrayElement(['Adaptação', 'Cutting', 'Off Season']),
-    'name': 'Treino ' + faker.company.name(),
+    'name': faker.helpers.arrayElement(trainingNames),
     'startDate': '2023-08-22',
     'expirationDate': '2023-09-22',
     'divisions': divisonList,
