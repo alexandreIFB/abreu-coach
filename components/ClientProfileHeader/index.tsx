@@ -17,8 +17,8 @@ export function ClientProfileHeader({client, isClosed, handleClosedHeader}: Clie
   function renderMinimal() {
     return (
       <ContainerMinimal>
-        <Text size={24} weight='700'>{client.name}</Text>
-        <Text size={16}>{client.age} anos | {client.gender}</Text>
+        <Text size={18} weight='700'>{client.name}</Text>
+        <Text size={14}>{client.age} anos | {client.gender}</Text>
       </ContainerMinimal>
     );
   }

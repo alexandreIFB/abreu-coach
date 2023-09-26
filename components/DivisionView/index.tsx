@@ -6,6 +6,8 @@ import { FontAwesome } from '@expo/vector-icons';
 import { formatDate } from '../../app/helpers/formatDate';
 import { FlatList } from 'react-native-gesture-handler';
 import { DivisionCard } from '../DivisionCard';
+import { extractIsExpired } from '../../app/helpers/extractIsExpired';
+import { extractPassTime } from '../../app/helpers/extractPassTime';
 
 type DivisionViewProps = {
   plan: TrainingPlan
@@ -13,15 +15,9 @@ type DivisionViewProps = {
 }
 
 export function DivisionView({plan, onBackPress}: DivisionViewProps){
-  // const [showDivisions, setShowDivisions] = useState(false);
-  // const [showExercises, setShowExercises] = useState(false);
+  const isExpired = extractIsExpired(plan.expirationDate);
 
-  // const toggleDivisions = () => {
-  //   setShowDivisions(!showDivisions);
-  //   // Certifique-se de definir showExercises como false quando você expandir as divisões
-  //   setShowExercises(false);
-  // };
-
+  const daysPass = extractPassTime(plan.startDate, plan.expirationDate);
 
   return (
     <Container>
@@ -34,8 +30,10 @@ export function DivisionView({plan, onBackPress}: DivisionViewProps){
           <View />
         </TitleContainer>
         <DescribeContainer>
-          <Text weight='700'>Início: <Text>{formatDate(plan.startDate)}</Text></Text>
-          <Text weight='700'>Expiração: <Text>{formatDate(plan.expirationDate)}</Text></Text>
+          <Text>
+            <FontAwesome name={isExpired ? 'calendar-times-o' : 'calendar-o'} size={16}/>
+            {`  ${formatDate(plan.startDate)} a ${formatDate(plan.expirationDate)} (${daysPass} dias)`}
+          </Text>
         </DescribeContainer>
       </HeaderContainer>
       <FlatList

@@ -12,7 +12,6 @@ export const ContainerMinimal = styled.View`
   align-items: center;
   background-color: #fff;
   width: 100%;
-  gap: 4px;
   padding: 8px 0px;
 `;
 

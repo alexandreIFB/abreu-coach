@@ -4,18 +4,13 @@ import { Container, RowInfo } from './styles';
 import { Text } from '../Text';
 import { formatDate } from '../../app/helpers/formatDate';
 import { FontAwesome } from '@expo/vector-icons';
+import { extractIsExpired } from '../../app/helpers/extractIsExpired';
 
 type TrainingCardProps = {
   trainingData: TrainingPlan
 }
 
 export function TrainingCard({ trainingData }: TrainingCardProps){
-  function extractIsExpired(expirationDate: string) {
-    const expiration = new Date(expirationDate);
-    const currentDate = new Date();
-    return expiration <= currentDate;
-  }
-
   const isExpired = extractIsExpired(trainingData.expirationDate);
 
   return (

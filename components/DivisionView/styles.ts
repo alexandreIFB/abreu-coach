@@ -9,7 +9,7 @@ export const Container = styled.View`
 export const HeaderContainer = styled.View`
   width: 100%;
   padding: 10px;
-  gap: 12px;
+  gap: 4px;
   border-bottom-width: 1px;
   border-color: #ccc;
 `;
@@ -27,6 +27,9 @@ export const BackButton = styled.TouchableOpacity`
 
 
 export const DescribeContainer = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0px 12px;
   width: 100%;
   gap: 8px;
 `;

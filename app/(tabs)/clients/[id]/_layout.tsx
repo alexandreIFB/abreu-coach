@@ -3,9 +3,11 @@ import { View } from '../../../../components/View';
 import { clientList } from '../../../../constants/clients_mock';
 import { ClientProfileHeader } from '../../../../components/ClientProfileHeader';
 import { NavBar } from '../../../../components/NavBar';
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
+import {BackHandler} from 'react-native';
 import { TabTraining } from '../../../../components/TabTraining';
 import { TrainingPlan, trainingList } from '../../../../constants/training_mock';
+import { useFocusEffect } from 'expo-router';
 
 export default function ClientProfile() {
   const [showPlan, setShowPlan] = useState<TrainingPlan | null>(null);
@@ -36,6 +38,23 @@ export default function ClientProfile() {
   if(!user){
     return;
   }
+
+  useFocusEffect(
+    useCallback(() => {
+      const onBackPress = () => {
+        if (showPlan) {
+          handlePlanChange(null);
+          return true;
+        } else {
+          return false;
+        }
+      };
+
+      const subscription = BackHandler.addEventListener('hardwareBackPress', onBackPress);
+
+      return () => subscription.remove();
+    }, [showPlan, handlePlanChange])
+  );
 
   return (
     <View>
