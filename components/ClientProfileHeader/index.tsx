@@ -5,6 +5,7 @@ import { Text } from '../Text';
 import { ButtonsContainer, ButtonsIcon, Container, ContainerMinimal } from './styles';
 import { useState } from 'react';
 import { DraggableLine } from '../DraggableLine';
+import { Linking } from 'react-native';
 
 
 type ClientProfileHeaderProps = {
@@ -29,8 +30,20 @@ export function ClientProfileHeader({client}: ClientProfileHeaderProps){
         <AvataImage url={client.profileImage || ''} size={60}/>
         <Text size={24} weight='700'>{client.name}</Text>
         <Text size={16}>{client.age} anos | {client.gender}</Text>
-        <ButtonsContainer>
-          <ButtonsIcon>
+        <ButtonsContainer >
+          <ButtonsIcon onPress={() =>
+            Linking.canOpenURL('whatsapp://send?text=oi').then(supported => {
+              if (supported) {
+                return Linking.openURL(
+                  `whatsapp://send?phone=${client.phoneNumber}&text=Olá, sua nova dieta está em seu email!`
+                );
+              } else {
+                return Linking.openURL(
+                  `https://api.whatsapp.com/send?phone=${client.phoneNumber}&text=Olá, sua nova dieta está em seu email!`
+                );
+              }
+            })
+          }>
             <FontAwesome size={18} name='phone' color='#5167f9'/>
           </ButtonsIcon>
           <ButtonsIcon>

@@ -5,6 +5,7 @@ export interface Client {
   name: string;
   gender: string;
   age: number;
+  phoneNumber: string;
   profileImage?: string;
 }
 
@@ -24,6 +25,7 @@ export function createRandomClient(): Client {
     gender: faker.helpers.arrayElement(['Masculino', 'Feminino']),
     age: fakerBr.number.int({max: 60, min: 10}),
     profileImage: fakerBr.image.avatar(),
+    phoneNumber: fakerBr.phone.number()
   };
 }
 

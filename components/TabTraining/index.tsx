@@ -3,6 +3,7 @@ import { TrainingPlan } from '../../constants/training_mock';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { TrainingCard } from '../TrainingCard';
 import { DivisionView } from '../DivisionView';
+import { AddIconFixed } from '../AddIconFixed';
 
 
 type TabTrainingProps = {
@@ -17,21 +18,24 @@ export function TabTraining({trainingList, setShowPlan, showPlan}: TabTrainingPr
     (<>
       {
         !showPlan  && (
-          <FlatList
-            data={trainingList}
-            keyExtractor={item => item.id}
-            renderItem={({item}) => (
-              <TouchableOpacity  onPress={() => {
-                setShowPlan(item);
-              }}>
-                <TrainingCard
-                  trainingData={item}
-                />
-              </TouchableOpacity>
-            )}
-            contentContainerStyle={{padding: 10, gap: 12}}
-            showsVerticalScrollIndicator={false}
-          />
+          <>
+            <FlatList
+              data={trainingList}
+              keyExtractor={item => item.id}
+              renderItem={({item}) => (
+                <TouchableOpacity  onPress={() => {
+                  setShowPlan(item);
+                }}>
+                  <TrainingCard
+                    trainingData={item}
+                  />
+                </TouchableOpacity>
+              )}
+              contentContainerStyle={{padding: 10, gap: 12}}
+              showsVerticalScrollIndicator={false}
+            />
+            <AddIconFixed />
+          </>
         )
       }
       {showPlan && (
