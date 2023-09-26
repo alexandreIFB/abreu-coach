@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { TrainingDivision } from '../../constants/training_mock';
-import { Container, ContainerExpand, RowExpand, RowInfo } from './styles';
+import { Container, ContainerExpand, ContainerHeader, RowExpand } from './styles';
 import { Text } from '../Text';
 import { MaterialIcons } from '@expo/vector-icons';
+import { ExerciseCard } from '../ExerciseCard';
 
 type DivisionCardProps = {
   divisionData: TrainingDivision
@@ -17,15 +18,17 @@ export function DivisionCard({ divisionData }: DivisionCardProps){
 
   return (
     <Container  onPress={toggleExpand}>
-      <Text weight='600'>{divisionData.name}</Text>
-      <RowInfo>
+      <ContainerHeader>
+        <Text weight='600'>{divisionData.name}</Text>
         <Text weight='400' size={14}>Exercícios: {divisionData.exercises.length}</Text>
-      </RowInfo>
+      </ContainerHeader>
       {isExpanded && (
         <ContainerExpand>
-          <Text>Exercícios da Divisão</Text>
           {divisionData.exercises.map((exercise, index) => (
-            <Text key={index}>{exercise.name}</Text>
+            <ExerciseCard
+              key={index}
+              exercise={exercise}
+            />
           ))}
         </ContainerExpand>
       )}

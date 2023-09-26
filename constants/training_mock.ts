@@ -1,6 +1,6 @@
 import { faker } from '@faker-js/faker';
 
-interface Exercise {
+export interface Exercise {
   name: string;
   description: string;
   exerciseTechnique: string;
@@ -45,7 +45,7 @@ const exercises: Exercise[] = [
     exerciseTechnique: 'Instruções detalhadas de como realizar o supino corretamente.',
     equipment: 'Banco de supino, barra e pesos',
     demoImage: 'URL da imagem ou vídeo de demonstração',
-    notes: 'Dicas adicionais, como ajuste de altura do banco.'
+    notes: 'Certifique-se de ajustar o banco para a altura adequada, de modo que a barra toque levemente no peito durante o movimento. Mantenha uma pegada firme e estável na barra para evitar lesões nos pulsos.'
   },
   {
     name: 'Tríceps Pulldown',
@@ -53,7 +53,7 @@ const exercises: Exercise[] = [
     exerciseTechnique: 'Instruções detalhadas de como realizar o tríceps pulldown corretamente.',
     equipment: 'Máquina de tríceps pulldown',
     demoImage: 'URL da imagem ou vídeo de demonstração',
-    notes: 'Dicas adicionais, como pegada recomendada.'
+    notes: 'Experimente diferentes pegadas na barra da máquina para atingir diferentes partes dos tríceps. Mantenha os cotovelos próximos ao corpo durante o exercício para maximizar o envolvimento dos tríceps.'
   },
   {
     name: 'Agachamento Livre',
@@ -61,7 +61,7 @@ const exercises: Exercise[] = [
     exerciseTechnique: 'Instruções detalhadas de como realizar o agachamento livre corretamente.',
     equipment: 'Barra e pesos',
     demoImage: 'URL da imagem ou vídeo de demonstração',
-    notes: 'Dicas adicionais, como posição dos pés.'
+    notes: 'Posicione os pés na largura dos ombros e mantenha os joelhos alinhados com os pés durante o agachamento. Mantenha as costas retas e olhe para frente para manter uma boa forma.'
   },
   {
     name: 'Rosca Direta',
@@ -69,7 +69,7 @@ const exercises: Exercise[] = [
     exerciseTechnique: 'Instruções detalhadas de como realizar a rosca direta corretamente.',
     equipment: 'Barra EZ ou halteres',
     demoImage: 'URL da imagem ou vídeo de demonstração',
-    notes: 'Dicas adicionais, como postura.'
+    notes: 'Mantenha os cotovelos próximos ao corpo durante o movimento e evite balançar o corpo para ajudar no levantamento. Use um peso adequado para evitar lesões nos braços.'
   },
   {
     name: 'Leg Press',
@@ -77,7 +77,7 @@ const exercises: Exercise[] = [
     exerciseTechnique: 'Instruções detalhadas de como realizar o leg press corretamente.',
     equipment: 'Máquina de leg press',
     demoImage: 'URL da imagem ou vídeo de demonstração',
-    notes: 'Dicas adicionais, como ajuste do assento.'
+    notes: 'Ajuste o assento de acordo com sua altura para garantir um movimento confortável. Mantenha os joelhos alinhados com os pés e evite trancar as pernas completamente no topo do movimento para evitar tensões indesejadas.'
   }
 ];
 
