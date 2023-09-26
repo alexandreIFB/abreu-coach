@@ -3,6 +3,7 @@ import { TrainingPlan } from '../../constants/training_mock';
 import { Text } from '../Text';
 import { BackButton, Container, DescribeContainer, HeaderContainer, TitleContainer } from './styles';
 import { FontAwesome } from '@expo/vector-icons';
+import { formatDate } from '../../app/helpers/formatDate';
 
 
 
@@ -21,9 +22,6 @@ export function DivisionView({plan, onBackPress}: DivisionViewProps){
   //   setShowExercises(false);
   // };
 
-  // const toggleExercises = () => {
-  //   setShowExercises(!showExercises);
-  // };
 
   return (
     <Container>
@@ -36,8 +34,8 @@ export function DivisionView({plan, onBackPress}: DivisionViewProps){
           <View />
         </TitleContainer>
         <DescribeContainer>
-          <Text weight='700'>Início: <Text>{plan.startDate}</Text></Text>
-          <Text weight='700'>Expiração: <Text>{plan.expirationDate}</Text></Text>
+          <Text weight='700'>Início: <Text>{formatDate(plan.startDate)}</Text></Text>
+          <Text weight='700'>Expiração: <Text>{formatDate(plan.expirationDate)}</Text></Text>
         </DescribeContainer>
       </HeaderContainer>
     </Container>

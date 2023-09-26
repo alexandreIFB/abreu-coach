@@ -4,15 +4,13 @@ import { clientList } from '../../../../constants/clients_mock';
 import { ClientProfileHeader } from '../../../../components/ClientProfileHeader';
 import { NavBar } from '../../../../components/NavBar';
 import { useState } from 'react';
-import { TrainingCard } from '../../../../components/TrainingCard';
-import {  TrainingPlan, trainingList } from '../../../../constants/training_mock';
-import { FlatList } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
-import { DivisionView } from '../../../../components/DivisionView';
+import { TabTraining } from '../../../../components/TabTraining';
+import { TrainingPlan, trainingList } from '../../../../constants/training_mock';
 
 export default function ClientProfile() {
-  const [activeTab, setActiveTab] = useState(0);
   const [showPlan, setShowPlan] = useState<TrainingPlan | null>(null);
+
+  const [activeTab, setActiveTab] = useState(0);
 
   const tabs = ['Treino', 'Dieta', 'Protocolo'];
 
@@ -33,34 +31,13 @@ export default function ClientProfile() {
       <ClientProfileHeader client={user} />
       <NavBar tabs={tabs} activeTab={activeTab} onChangeTab={handleTabChange} />
       {
-        activeTab === 0 && (<>
-          {
-            !showPlan  && (
-              <FlatList
-                data={trainingList}
-                keyExtractor={item => item.id}
-                renderItem={({item}) => (
-                  <TouchableOpacity onPress={() => {
-                    setShowPlan(item);
-                  }}>
-                    <TrainingCard
-                      trainingData={item}
-                    />
-                  </TouchableOpacity>
-                )}
-                contentContainerStyle={{padding: 10, gap: 12}}
-              />
-            )
-          }
-          {showPlan && (
-            <DivisionView
-              plan={showPlan}
-              onBackPress={() => {
-                setShowPlan(null);
-              }}
-            />
-          )}
-        </>)
+        activeTab === 0 && (
+          <TabTraining
+            trainingList={trainingList}
+            setShowPlan={setShowPlan}
+            showPlan={showPlan}
+          />
+        )
       }
     </View>
   );

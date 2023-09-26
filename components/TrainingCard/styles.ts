@@ -19,4 +19,5 @@ export const Container = styled.View<ContainerProps>`
 export const RowInfo = styled.View`
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 `;

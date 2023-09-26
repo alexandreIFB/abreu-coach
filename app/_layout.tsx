@@ -22,6 +22,7 @@ export default function RootLayout() {
     'GeneralSans-400': require('../assets/fonts/GeneralSans-Regular.otf'),
     'GeneralSans-600': require('../assets/fonts/GeneralSans-Semibold.otf'),
     'GeneralSans-700': require('../assets/fonts/GeneralSans-Bold.otf'),
+    'CourierNew': require('../assets/fonts/CourierNew.otf'),
     ...FontAwesome.font,
   });
 
