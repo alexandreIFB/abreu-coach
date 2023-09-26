@@ -5,7 +5,7 @@ import { Text } from '../../components/Text';
 export default function TabOneScreen() {
   return (
     <View>
-      <Text>Tab One</Text>
+      <Text>Tela inicial ...</Text>
     </View>
   );
 }
