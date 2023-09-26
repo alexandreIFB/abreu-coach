@@ -3,7 +3,6 @@ import { faker } from '@faker-js/faker';
 export interface Exercise {
   name: string;
   description: string;
-  exerciseTechnique: string;
   equipment: string;
   demoImage: string;
   notes: string;
@@ -42,7 +41,6 @@ const exercises: Exercise[] = [
   {
     name: 'Supino Reto',
     description: 'Realizar 4 séries de 12 repetições com 60 segundos de descanso entre as séries.',
-    exerciseTechnique: 'Instruções detalhadas de como realizar o supino corretamente.',
     equipment: 'Banco de supino, barra e pesos',
     demoImage: 'URL da imagem ou vídeo de demonstração',
     notes: 'Certifique-se de ajustar o banco para a altura adequada, de modo que a barra toque levemente no peito durante o movimento. Mantenha uma pegada firme e estável na barra para evitar lesões nos pulsos.'
@@ -50,7 +48,6 @@ const exercises: Exercise[] = [
   {
     name: 'Tríceps Pulldown',
     description: 'Realizar 3 séries de 15 repetições com 45 segundos de descanso entre as séries.',
-    exerciseTechnique: 'Instruções detalhadas de como realizar o tríceps pulldown corretamente.',
     equipment: 'Máquina de tríceps pulldown',
     demoImage: 'URL da imagem ou vídeo de demonstração',
     notes: 'Experimente diferentes pegadas na barra da máquina para atingir diferentes partes dos tríceps. Mantenha os cotovelos próximos ao corpo durante o exercício para maximizar o envolvimento dos tríceps.'
@@ -58,7 +55,6 @@ const exercises: Exercise[] = [
   {
     name: 'Agachamento Livre',
     description: 'Realizar 5 séries de 10 repetições com 90 segundos de descanso entre as séries.',
-    exerciseTechnique: 'Instruções detalhadas de como realizar o agachamento livre corretamente.',
     equipment: 'Barra e pesos',
     demoImage: 'URL da imagem ou vídeo de demonstração',
     notes: 'Posicione os pés na largura dos ombros e mantenha os joelhos alinhados com os pés durante o agachamento. Mantenha as costas retas e olhe para frente para manter uma boa forma.'
@@ -66,7 +62,6 @@ const exercises: Exercise[] = [
   {
     name: 'Rosca Direta',
     description: 'Realizar 3 séries de 12 repetições com 45 segundos de descanso entre as séries.',
-    exerciseTechnique: 'Instruções detalhadas de como realizar a rosca direta corretamente.',
     equipment: 'Barra EZ ou halteres',
     demoImage: 'URL da imagem ou vídeo de demonstração',
     notes: 'Mantenha os cotovelos próximos ao corpo durante o movimento e evite balançar o corpo para ajudar no levantamento. Use um peso adequado para evitar lesões nos braços.'
@@ -74,7 +69,6 @@ const exercises: Exercise[] = [
   {
     name: 'Leg Press',
     description: 'Realizar 4 séries de 12 repetições com 60 segundos de descanso entre as séries.',
-    exerciseTechnique: 'Instruções detalhadas de como realizar o leg press corretamente.',
     equipment: 'Máquina de leg press',
     demoImage: 'URL da imagem ou vídeo de demonstração',
     notes: 'Ajuste o assento de acordo com sua altura para garantir um movimento confortável. Mantenha os joelhos alinhados com os pés e evite trancar as pernas completamente no topo do movimento para evitar tensões indesejadas.'
