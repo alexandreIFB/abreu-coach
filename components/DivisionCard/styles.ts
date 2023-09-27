@@ -21,11 +21,8 @@ export const RowExpand = styled.View`
   margin-top: -12px;
 `;
 
-export const ContainerExpand = styled.View`
-  flex-direction: column;
-  gap: 4px;
-  border-top-width: 1px;
-  border-color: #ccc;
-  margin-top: 8px;
-  padding: 12px 2px;
+export const Separator = styled.View`
+  height: 1px;
+  width: 100%;
+  background-color: #ccc; /* Cor do separador */
 `;
