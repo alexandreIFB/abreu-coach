@@ -1,12 +1,12 @@
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-import { TouchableOpacity } from 'react-native';
 import { Container } from './styles';
+import { View } from 'react-native';
 
 export function AddIconFixed(){
   return (
     <Container>
-      <TouchableOpacity
+      <View
         style={{
           backgroundColor: '#edf4ff',
           width: 22,
@@ -15,9 +15,6 @@ export function AddIconFixed(){
           justifyContent: 'center',
           alignItems: 'center',
         }}
-        onPress={() =>
-          console.log('+ pressed')
-        }
       >
         <MaterialCommunityIcons
           style={{
@@ -28,7 +25,7 @@ export function AddIconFixed(){
           name="plus-circle"
           color='#5167f9'
         />
-      </TouchableOpacity>
+      </View>
     </Container>
   );
 }

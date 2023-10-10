@@ -2,7 +2,7 @@ import {  Stack } from 'expo-router';
 
 
 
-export default function ClientStackLayout() {
+export default function ClientsStackLayout() {
   return (
     <Stack>
       <Stack.Screen name="index"
@@ -16,7 +16,7 @@ export default function ClientStackLayout() {
         }}
       />
       <Stack.Screen name="[id]" options={{
-        headerShown: true,
+        headerShown: false,
         title: 'Aluno',
         headerTitleAlign: 'center',
         headerTitleStyle: {
