@@ -110,8 +110,8 @@ export function generateRandomTraining(): TrainingPlan{
   return {
     'id': faker.string.uuid(),
     'clientId': '1',
-    'description': faker.helpers.arrayElement(['Adaptação', 'Cutting', 'Off Season']),
     'name': faker.helpers.arrayElement(trainingNames),
+    'description': faker.helpers.arrayElement(['Adaptação', 'Cutting', 'Off Season']),
     'startDate': '2023-08-22',
     'expirationDate': '2023-09-22',
     'divisions': divisonList,

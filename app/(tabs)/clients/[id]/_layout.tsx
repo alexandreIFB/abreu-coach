@@ -24,7 +24,7 @@ export default function ClientsStackLayout() {
             fontFamily: 'GeneralSans-600'
           },
         }} />
-      <Stack.Screen name="newTrainingForm"
+      <Stack.Screen name="newTrainingForm/index"
         options={{
           headerShown: true,
           title: `Novo Treino - ${user.name}`,
