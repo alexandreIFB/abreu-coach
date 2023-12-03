@@ -1,12 +1,30 @@
 import { Link} from 'expo-router';
-import { clientList, groupClientsByInitial } from '../../constants/clients_mock';
+import { Client,  groupClientsByInitial } from '../../constants/clients_mock';
 import { Text } from '../Text';
 import { ClientCard } from './ClientCard';
 import { SectionList } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 export function ClientsList() {
-  const groupedClients = groupClientsByInitial(clientList);
+  const [clients, setClients] = useState<Client[]>([]);
+
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('https://coach-app-api.alexandreabreus.repl.co/client');
+        setClients(response.data);
+      } catch (error) {
+        console.error('Erro na requisição:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const groupedClients = groupClientsByInitial(clients);
 
   const sections = Object.keys(groupedClients).map(initial => ({
     title: initial,
