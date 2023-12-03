@@ -1,7 +1,7 @@
 
 // Define an interface to represent a client
 export interface Client {
-  id: string;
+  _id: string;
   name: string;
   gender: string;
   age: number;
@@ -20,7 +20,7 @@ export const fakerBr = new Faker({
 
 export function createRandomClient(): Client {
   return {
-    id: fakerBr.string.uuid(),
+    _id: fakerBr.string.uuid(),
     name: fakerBr.person.fullName(),
     gender: faker.helpers.arrayElement(['Masculino', 'Feminino']),
     age: fakerBr.number.int({max: 60, min: 10}),

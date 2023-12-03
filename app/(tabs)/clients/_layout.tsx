@@ -26,6 +26,16 @@ export default function ClientsStackLayout() {
             fontFamily: 'GeneralSans-600'
           }
         }} />
+        <Stack.Screen name="newClient/index"
+          options={{
+            headerShown: true,
+            title: 'Novo Aluno',
+            headerTitleAlign: 'center',
+            headerTitleStyle: {
+              fontSize: 16,
+              fontFamily: 'GeneralSans-600'
+            }
+          }} />
       </Stack>
     </ClientProvider>
   );

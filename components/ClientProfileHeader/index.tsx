@@ -26,7 +26,7 @@ export function ClientProfileHeader({client, isClosed, handleClosedHeader}: Clie
   function renderDefault() {
     return (
       <Container>
-        <AvataImage url={client.profileImage || ''} size={60}/>
+        <AvataImage url={client.profileImage || 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'} size={60}/>
         <Text size={24} weight='700'>{client.name}</Text>
         <Text size={16}>{client.age} anos | {client.gender}</Text>
         <ButtonsContainer >
