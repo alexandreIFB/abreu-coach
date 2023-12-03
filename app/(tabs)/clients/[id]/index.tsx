@@ -1,6 +1,5 @@
 import { Link, Redirect, useLocalSearchParams } from 'expo-router';
 import { View } from '../../../../components/View';
-import { clientList } from '../../../../constants/clients_mock';
 import { ClientProfileHeader } from '../../../../components/ClientProfileHeader';
 import { NavBar } from '../../../../components/NavBar';
 import { useState, useCallback } from 'react';
@@ -9,8 +8,10 @@ import { TabTraining } from '../../../../components/TabTraining';
 import { TrainingPlan, trainingList } from '../../../../constants/training_mock';
 import { useFocusEffect } from 'expo-router';
 import { AddIconFixed } from '../../../../components/AddIconFixed';
+import { useClient } from '../../../../contexts/ClientContext';
 
 export default function ClientProfileHome() {
+  const {client} = useClient();
   const [showPlan, setShowPlan] = useState<TrainingPlan | null>(null);
   const [isClosed, setIsClosed] = useState(false);
 
@@ -36,7 +37,7 @@ export default function ClientProfileHome() {
 
   const { id } = useLocalSearchParams();
 
-  const user = clientList.find((client) => client.id === id);
+  const user = client;
 
   if(!user){
     return <Redirect href="/clients" />;

@@ -1,12 +1,12 @@
-import {  Redirect, Stack, useLocalSearchParams } from 'expo-router';
-import { clientList } from '../../../../constants/clients_mock';
+import {  Redirect, Stack } from 'expo-router';
+import { useClient } from '../../../../contexts/ClientContext';
 
 
 
 export default function ClientsStackLayout() {
-  const { id } = useLocalSearchParams();
+  const {client} = useClient();
 
-  const user = clientList.find((client) => client.id === id);
+  const user = client;
 
   if(!user){
     return <Redirect href="/clients" />;

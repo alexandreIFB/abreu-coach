@@ -2,7 +2,6 @@ import React from 'react';
 import { Redirect, useLocalSearchParams } from 'expo-router';
 import { Text } from '../../../../../components/Text';
 import { ViewPress } from '../../../../../components/View';
-import { clientList } from '../../../../../constants/clients_mock';
 import { PageControl, Button } from 'react-native-ui-lib';
 import { useState } from 'react';
 import { ContainerForm, ContainerStepper, NextStepper } from './styles';
@@ -10,8 +9,11 @@ import { faker } from '@faker-js/faker';
 import BasicTraining from './BasicTraining';
 import { Keyboard } from 'react-native';
 import { Formik } from 'formik'; // Importe Formik
+import { useClient } from '../../../../../contexts/ClientContext';
 
 export default function NewTrainingForm() {
+  const {client} = useClient();
+
   const { id } = useLocalSearchParams();
 
   const initialValues = {
@@ -41,7 +43,8 @@ export default function NewTrainingForm() {
 
 
 
-  const user = clientList.find((client) => client.id === id);
+
+  const user = client;
 
   if (!user) {
     return <Redirect href="/clients" />;

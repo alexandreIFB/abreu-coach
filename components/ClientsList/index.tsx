@@ -1,4 +1,3 @@
-import { Link} from 'expo-router';
 import { Client,  groupClientsByInitial } from '../../constants/clients_mock';
 import { Text } from '../Text';
 import { ClientCard } from './ClientCard';
@@ -6,8 +5,12 @@ import { SectionList } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useClient } from '../../contexts/ClientContext';
+import { useLinkTo } from '@react-navigation/native';
 
 export function ClientsList() {
+  const navigation = useLinkTo();
+  const {setClientInfo} = useClient();
   const [clients, setClients] = useState<Client[]>([]);
 
 
@@ -39,11 +42,12 @@ export function ClientsList() {
         <Text weight='600'>{section.title}</Text>
       )}
       renderItem={({ item }) => (
-        <Link href={`/clients/${item.id}`} asChild>
-          <TouchableOpacity>
-            <ClientCard client={item} />
-          </TouchableOpacity>
-        </Link>
+        <TouchableOpacity onPress={() => {
+          setClientInfo(item);
+          navigation(`/clients/${item.id}`);
+        }}>
+          <ClientCard client={item} />
+        </TouchableOpacity>
       )}
       contentContainerStyle={{padding: 8, gap: 10}}
     />
