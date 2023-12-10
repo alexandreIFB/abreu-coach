@@ -10,6 +10,7 @@ import BasicTraining from './BasicTraining';
 import { Keyboard } from 'react-native';
 import { Formik } from 'formik'; // Importe Formik
 import { useClient } from '../../../../../contexts/ClientContext';
+import TrainingDivisionForm from './TrainingDivision';
 
 export default function NewTrainingForm() {
   const {client} = useClient();
@@ -18,10 +19,10 @@ export default function NewTrainingForm() {
 
   const initialValues = {
     clientId: id as string,
-    description: '',
+    description: 't',
     divisions: [],
     expirationDate: '',
-    name: '',
+    name: 'y',
     startDate: '',
     id: faker.string.uuid()
   };
@@ -72,7 +73,8 @@ export default function NewTrainingForm() {
         return ( // Passe formik como argumento e renderize dentro desta função
           <ViewPress onPress={() => Keyboard.dismiss()}>
             <ContainerForm>
-              {currentPage === 0 ? <BasicTraining /> : <Text>Teste</Text>}
+              {currentPage === 0 && <BasicTraining />}
+              {currentPage === 1  && <TrainingDivisionForm />}
             </ContainerForm>
             <ContainerStepper>
               <PageControl

@@ -9,8 +9,27 @@ export const ContainerStepper = styled.View`
 `;
 
 export const InputsContainer = styled.View`
+  gap: 16px;
+  padding: 18px;
+`;
+
+
+export const CardContainer = styled.View`
+  flex-direction: row;
+  align-items: center;
+  padding: 12px;
+  border-radius: 8px;
+  gap: 12px;
+  width: 100%;
+  background-color: #bbb;
+  border-radius: 8px;
+`;
+
+
+export const FormDivisionContainer = styled.View`
   gap: 8px;
   padding: 18px;
+  background-color: #f9fbfc;
 `;
 
 export const ContainerForm = styled.View`
