@@ -20,7 +20,11 @@ export default function NewTrainingForm() {
   const initialValues = {
     clientId: id as string,
     description: 't',
-    divisions: [],
+    divisions: [{
+      name: '',
+      exercises: [],
+      id: faker.string.uuid(),
+    }],
     expirationDate: '',
     name: 'y',
     startDate: '',
@@ -34,9 +38,7 @@ export default function NewTrainingForm() {
     setCurrengPage((prev) => prev - 1);
   }
 
-  function nextPage() {
-    setCurrengPage((prev) => prev + 1);
-  }
+
 
   function onPagePress(index: number) {
     setCurrengPage(index);
@@ -69,6 +71,15 @@ export default function NewTrainingForm() {
             currentPage === numOfPages - 1 ||
               (currentPage === 0 && !notHaveFieldEmpty)
           );
+        }
+
+        function nextPage() {
+          if(currentPage === 1){
+            const filteredDivisions = formik.values.divisions.filter((item) => item.name);
+            formik.setFieldValue('divisions', filteredDivisions);
+          }
+
+          setCurrengPage((prev) => prev + 1);
         }
         return ( // Passe formik como argumento e renderize dentro desta função
           <ViewPress onPress={() => Keyboard.dismiss()}>
