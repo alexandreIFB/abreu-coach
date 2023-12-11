@@ -6,6 +6,7 @@ import { FontAwesome, MaterialIcons } from '@expo/vector-icons';
 import { FlatList } from 'react-native-gesture-handler';
 import { Button, TextField } from 'react-native-ui-lib';
 import { useFormikContext } from 'formik';
+import axios from 'axios';
 
 type DivisionCardProps = {
   indexData: number
@@ -15,6 +16,7 @@ export function DivisionCardForm({ indexData }: DivisionCardProps){
   const formik = useFormikContext<TrainingPlan>();
 
   const [isExpanded, setIsExpanded] = useState(false);
+  const [loadingDicas, setLoadingDicas] = useState(false);
 
   const toggleExpand = () => {
     setIsExpanded(!isExpanded);
@@ -53,12 +55,45 @@ export function DivisionCardForm({ indexData }: DivisionCardProps){
                   value={formik.values.divisions[indexData].exercises[index].description}
                   onChangeText={(text) => formik.setFieldValue(`divisions[${indexData}].exercises[${index}].description`, text)}
                 />
+
+
                 <TextField
                   label='Dicas'
                   placeholder={'Realizar 3 séries de 15 repetições ....'}
                   value={formik.values.divisions[indexData].exercises[index].notes}
+                  editable={!!formik.values.divisions[indexData].exercises[index].notes}
+                  textBreakStrategy='simple'
                   onChangeText={(text) => formik.setFieldValue(`divisions[${indexData}].exercises[${index}].notes`, text)}
+                  multiline
                 />
+                <Button
+                  label={'Gerar dicas'}
+                  style={{
+                    marginBottom: 12,
+                  }}
+                  size='xSmall'
+                  disabled={!formik.values.divisions[indexData].exercises[index].name || !formik.values.divisions[indexData].exercises[index].description || !formik.values.divisions[indexData].exercises[index].equipment || loadingDicas || !!formik.values.divisions[indexData].exercises[index].notes}
+                  onPress={async() => {
+                    const name = formik.values.divisions[indexData].exercises[index].name;
+                    const equipment = formik.values.divisions[indexData].exercises[index].equipment;
+                    const description = formik.values.divisions[indexData].exercises[index].description;
+
+                    const message = `Conforme o exercicio: ${name}, equipamento: ${equipment} e descricao: ${description}, gere uma dica para o aluno com no maximo 2 paragrafos, retorne apenas a dica.`;
+
+                    setLoadingDicas(true);
+
+                    try {
+                      const response = await axios.post('https://coach-app-api.alexandreabreus.repl.co/chatgpt', {
+                        message
+                      });
+
+                      formik.setFieldValue(`divisions[${indexData}].exercises[${index}].notes`, response.data);
+
+                    } catch (error) {
+                      console.error('Erro na requisição:', error);
+                    }
+
+                  }} />
 
                 <FontAwesome name='trash' size={16} color='red' onPress={() => {
                   const filteredExercises = formik.values.divisions[indexData].exercises.filter((_, idx) => idx !== index);
