@@ -39,7 +39,7 @@ export function DivisionView({plan, onBackPress}: DivisionViewProps){
       <FlatList
         data={plan.divisions}
         style={{ width: '100%' }}
-        keyExtractor={item => item.id}
+        keyExtractor={item => item._id}
         renderItem={({item}) => (
           <DivisionCard
             divisionData={item}

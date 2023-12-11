@@ -19,7 +19,7 @@ export function TabTraining({trainingList, handlePlanChange, showPlan}: TabTrain
         !showPlan  && (
           <FlatList
             data={trainingList}
-            keyExtractor={item => item.id}
+            keyExtractor={item => item._id}
             renderItem={({item}) => (
               <TouchableOpacity  onPress={() => {
                 handlePlanChange(item);

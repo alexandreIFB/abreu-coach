@@ -1,19 +1,39 @@
-import { Link, Redirect, useLocalSearchParams } from 'expo-router';
+import { Link, Redirect, useLocalSearchParams, useNavigation } from 'expo-router';
 import { View } from '../../../../components/View';
 import { ClientProfileHeader } from '../../../../components/ClientProfileHeader';
 import { NavBar } from '../../../../components/NavBar';
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { BackHandler, TouchableOpacity } from 'react-native';
 import { TabTraining } from '../../../../components/TabTraining';
-import { TrainingPlan, trainingList } from '../../../../constants/training_mock';
+import { TrainingPlan } from '../../../../constants/training_mock';
 import { useFocusEffect } from 'expo-router';
 import { AddIconFixed } from '../../../../components/AddIconFixed';
 import { useClient } from '../../../../contexts/ClientContext';
+import axios from 'axios';
 
 export default function ClientProfileHome() {
   const {client} = useClient();
   const [showPlan, setShowPlan] = useState<TrainingPlan | null>(null);
   const [isClosed, setIsClosed] = useState(false);
+  const [plans, setPlans] = useState<TrainingPlan[]>([]);
+  const navigationx = useNavigation();
+
+  const [isFocused, setIsFocused] = useState(false);
+
+
+  useEffect(() => {
+    navigationx.addListener('focus', () => {
+      setIsFocused(true);
+    });
+    navigationx.addListener('blur', () => {
+      setIsFocused(false);
+    });
+
+
+  }, []);
+
+
+
 
 
   const [activeTab, setActiveTab] = useState(0);
@@ -43,6 +63,19 @@ export default function ClientProfileHome() {
     return <Redirect href="/clients" />;
   }
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`https://coach-app-api.alexandreabreus.repl.co/trainingplan/${user._id}`);
+        setPlans(response.data);
+      } catch (error) {
+        console.error('Erro na requisição:', error);
+      }
+    };
+
+    fetchData();
+  }, [isFocused]);
+
   useFocusEffect(
     useCallback(() => {
       const onBackPress = () => {
@@ -67,7 +100,7 @@ export default function ClientProfileHome() {
       {
         activeTab === 0 && (
           <TabTraining
-            trainingList={trainingList}
+            trainingList={plans}
             handlePlanChange={handlePlanChange}
             showPlan={showPlan}
           />

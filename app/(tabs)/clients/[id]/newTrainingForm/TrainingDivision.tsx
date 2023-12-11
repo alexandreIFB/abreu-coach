@@ -17,13 +17,13 @@ export default function TrainingDivisionForm() {
       <FlatList
         data={formik.values.divisions}
         style={{ width: '100%' }}
-        keyExtractor={item => item.id}
+        keyExtractor={item => item._id}
         renderItem={({ item, index }) => (
           <CardContainer
-            key={item.id}
+            key={item._id}
           >
             <TextField
-              key={item.id}
+              key={item._id}
               label='Nome'
               placeholder={'Nome da divisao de treino: ex Peito e Ombro'}
               value={formik.values.divisions[index].name}
@@ -33,7 +33,7 @@ export default function TrainingDivisionForm() {
               }}
             />
             <FontAwesome name='trash' size={16} color='red' onPress={() => {
-              const filteredDivisions = formik.values.divisions.filter((itemx) => itemx.id !== item.id);
+              const filteredDivisions = formik.values.divisions.filter((itemx) => itemx._id !== item._id);
               formik.setFieldValue('divisions', filteredDivisions);
             }} />
           </CardContainer>
@@ -48,7 +48,7 @@ export default function TrainingDivisionForm() {
           formik.setFieldValue('divisions', [...formik.values.divisions, {
             name: '',
             exercises: [],
-            id: faker.string.uuid(),
+            _id: faker.string.uuid(),
           }]);
         }} />
     </InputsContainer>

@@ -4,18 +4,18 @@ export interface Exercise {
   name: string;
   description: string;
   equipment: string;
-  demoImage: string;
+  demoImage?: string;
   notes: string;
 }
 
 export interface TrainingDivision {
-  id: string;
+  _id: string;
   name: string;
   exercises: Exercise[];
 }
 
 export interface TrainingPlan  {
-  id: string;
+  _id: string;
   clientId: string;
   description: string;
   name: string;
@@ -82,7 +82,7 @@ function createRandomExercice(): Exercise {
 
 function createRandomDivision(): TrainingDivision {
   return {
-    'id': faker.string.uuid(),
+    '_id': faker.string.uuid(),
     'name': faker.helpers.arrayElement(['Peito + Triceps', 'Costas + Biceps', 'Braço', 'Ombro + Trapézio', 'Perna + Abs', 'Força']),
     'exercises': faker.helpers.multiple(createRandomExercice, {
       count: 7,
@@ -95,7 +95,7 @@ export const divisonList: TrainingDivision[] = faker.helpers.multiple(createRand
 });
 
 const notExpiredTraining: TrainingPlan = {
-  'id': faker.string.uuid(),
+  '_id': faker.string.uuid(),
   'clientId': '1',
   'description': faker.helpers.arrayElement(['Adaptação', 'Cutting', 'Off Season']),
   'name': faker.helpers.arrayElement(trainingNames),
@@ -108,7 +108,7 @@ export function generateRandomTraining(): TrainingPlan{
 
 
   return {
-    'id': faker.string.uuid(),
+    '_id': faker.string.uuid(),
     'clientId': '1',
     'name': faker.helpers.arrayElement(trainingNames),
     'description': faker.helpers.arrayElement(['Adaptação', 'Cutting', 'Off Season']),
